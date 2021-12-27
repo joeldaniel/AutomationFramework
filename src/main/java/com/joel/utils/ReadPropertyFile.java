@@ -8,6 +8,8 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Properties;
 
+import com.joel.enums.Configproperties;
+
 public final class ReadPropertyFile {
 
 	private ReadPropertyFile() {}
@@ -36,14 +38,18 @@ public final class ReadPropertyFile {
 		
 	}
 	
-	public static String readProperty(String key) throws Exception {
+	/*public static String readProperty(String key) throws Exception {
 		if(Objects.isNull(key)) 
 			throw new Exception("key is not available");
 	
-		return ConfigMap.get(key);
-			
-			
-		
+		return ConfigMap.get(key);		
+	}*/
+	
+	public static String get(Configproperties key)  {
+		if (Objects.isNull(key) || Objects.isNull(ConfigMap.get(key.name().toLowerCase()))) {
+			System.err.println("Property name " + key + " is not found. Please check config.properties");
+		}
+		return ConfigMap.get(key.name().toLowerCase());
 	}
 	
 	

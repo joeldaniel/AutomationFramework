@@ -1,0 +1,10 @@
+package com.joel.enums;
+
+public enum Configproperties {
+	URL,
+	OVERRIDEREPORTS	,
+	PASSEDSTEPSSCREENSHOTS,
+	FAILEDSTEPSSCREENSHOTS,
+	SKIPPEDSTEPSSCREENSHOTS
+
+}

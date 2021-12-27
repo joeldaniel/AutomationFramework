@@ -9,6 +9,8 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
+import com.joel.constants.FrameworkConstants;
+import com.joel.utils.ReadPropertyFile;
 
 public final class ExtentReport {
 	private ExtentReport() {}
@@ -31,10 +33,11 @@ public final class ExtentReport {
 
 	static void unLoad() {ex.remove();}
 	
-	public static void initReports() {
+	public static void initReports() throws Exception {
 		if(Objects.isNull(extent)) {
 			extent=new ExtentReports();
-			ExtentSparkReporter spark=new ExtentSparkReporter("index.html");
+			 
+			ExtentSparkReporter spark=new ExtentSparkReporter(FrameworkConstants.getExtentreportpath());
 			extent.attachReporter(spark);
 			
 			spark.config().setTheme(Theme.DARK);
@@ -47,7 +50,7 @@ public final class ExtentReport {
 	public static void flushReports() throws IOException {
 		if(Objects.nonNull(extent))
 			extent.flush();
-		Desktop.getDesktop().browse(new File("index.html").toURI());
+		Desktop.getDesktop().browse(new File(FrameworkConstants.getExtentreportpath()).toURI());
 	}
 	
 	public static void createTest(String testcasename) {

@@ -13,7 +13,7 @@ public final class LoginPagetest extends Basetest{
 	public void test2() throws Exception {
 		LoginPage name = new LoginPage();
 		name.click();
-		ExtentLogger.pass("Login page Test passed");
+		
 
 	}
 

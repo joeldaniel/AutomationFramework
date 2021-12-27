@@ -56,7 +56,12 @@ public class ListenersClass implements ITestListener,ISuiteListener{
 
 	@Override
 	public void onStart(ISuite suite) {
-		ExtentReport.initReports();		
+		try {
+			ExtentReport.initReports();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
 		
 	}
 

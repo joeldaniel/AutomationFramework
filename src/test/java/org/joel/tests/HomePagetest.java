@@ -16,7 +16,7 @@ public final class HomePagetest extends Basetest {
 		HomePage name = new HomePage();
 		name.click();
 		
-		ExtentLogger.pass("Home Page Test Passed");
+		
 	}
 
 
