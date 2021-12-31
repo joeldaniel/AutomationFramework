@@ -1,11 +1,11 @@
 package org.joel.tests;
 
+import java.util.concurrent.TimeUnit;
+
 import org.testng.annotations.Test;
 
-import com.joel.driver.Driver;
+import com.google.common.util.concurrent.Uninterruptibles;
 import com.joel.pages.HomePage;
-import com.joel.reports.ExtentLogger;
-import com.joel.utils.ReadPropertyFile;
 
 public final class HomePagetest extends Basetest {
 
@@ -15,7 +15,7 @@ public final class HomePagetest extends Basetest {
 	public void test1() throws Exception {
 		HomePage name = new HomePage();
 		name.click();
-		
+		Uninterruptibles.sleepUninterruptibly(15, TimeUnit.SECONDS);
 		
 	}
 

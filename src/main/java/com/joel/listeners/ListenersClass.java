@@ -59,7 +59,7 @@ public class ListenersClass implements ITestListener,ISuiteListener{
 		try {
 			ExtentReport.initReports();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}		
 		
@@ -70,7 +70,7 @@ public class ListenersClass implements ITestListener,ISuiteListener{
 		try {
 			ExtentReport.flushReports();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		

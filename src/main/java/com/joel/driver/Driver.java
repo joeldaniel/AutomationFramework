@@ -12,7 +12,7 @@ public final class Driver {
 	private Driver() {}
 	
 	public static WebDriver driver;
-	public static ThreadLocal<WebDriver> dr=new ThreadLocal<>();
+	private static ThreadLocal<WebDriver> dr=new ThreadLocal<>();
 	
 	public static WebDriver getDriver() {
 		return dr.get();

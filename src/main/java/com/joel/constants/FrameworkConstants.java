@@ -10,14 +10,26 @@ public final class FrameworkConstants {
 	}
 	
 	private static final String chromedriverpath=System.getProperty("user.dir")+"/src/test/resources/executables/chromedriver.exe";
-	private static final String extentreportpath=System.getProperty("user.dir")+"/Reports/";
+	private static final String extentreportfolderpath=System.getProperty("user.dir")+"\\Reports\\";
+	private static String extentreportfilepath="";
 
-	public static String getExtentreportpath() {
-		if(ReadPropertyFile.get(Configproperties.OVERRIDEREPORTS).equalsIgnoreCase("yes"))
-			return extentreportpath+System.currentTimeMillis()+"_index.html";
-		else
-			return extentreportpath+"index.html";
+	
+
+	public static String getExtentreportfilepath() {
+		if(extentreportfilepath.isEmpty()) {
+			extentreportfilepath=createReportPath();
+		}
+		return extentreportfilepath;
 	}
+
+	private static String createReportPath() {
+		if(ReadPropertyFile.get(Configproperties.OVERRIDEREPORTS).equalsIgnoreCase("no"))
+			return extentreportfolderpath+System.currentTimeMillis()+"_index.html";
+		else
+			return extentreportfolderpath+"index.html";
+			
+	}
+
 
 	public static String getChromedriverpath() {
 		return chromedriverpath;

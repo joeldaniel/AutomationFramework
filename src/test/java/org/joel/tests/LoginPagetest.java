@@ -1,9 +1,11 @@
 package org.joel.tests;
 
+import java.util.concurrent.TimeUnit;
+
 import org.testng.annotations.Test;
 
+import com.google.common.util.concurrent.Uninterruptibles;
 import com.joel.pages.LoginPage;
-import com.joel.reports.ExtentLogger;
 
 public final class LoginPagetest extends Basetest{
 
@@ -13,7 +15,7 @@ public final class LoginPagetest extends Basetest{
 	public void test2() throws Exception {
 		LoginPage name = new LoginPage();
 		name.click();
-		
+		Uninterruptibles.sleepUninterruptibly(15, TimeUnit.SECONDS);
 
 	}
 
