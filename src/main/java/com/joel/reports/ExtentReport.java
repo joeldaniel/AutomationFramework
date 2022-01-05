@@ -43,6 +43,8 @@ public final class ExtentReport {
 			spark.config().setTheme(Theme.DARK);
 			spark.config().setDocumentTitle("Automation Report");
 			spark.config().setReportName("Module");
+			String css=".r-img {width: 100%;}";
+			spark.config().setCss(css);
 			
 		}
 	}
