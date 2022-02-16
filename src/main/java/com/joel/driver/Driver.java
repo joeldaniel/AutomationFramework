@@ -4,8 +4,11 @@ import java.util.Objects;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import com.joel.constants.FrameworkConstants;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public final class Driver {
 	
@@ -24,10 +27,15 @@ public final class Driver {
 	
 	static void unload() { dr.remove(); }
 	
-	public static void initDriver() {
+	public static void initDriver(String browser) {
 		if(Objects.isNull(getDriver())) {
-			System.setProperty("webdriver.chrome.driver", FrameworkConstants.getChromedriverpath());
-			driver=new ChromeDriver();
+			if(browser.equals("chrome")) {
+				WebDriverManager.chromedriver().setup();
+				driver=new ChromeDriver();
+			}else if(browser.equalsIgnoreCase("firefox")) {
+				WebDriverManager.firefoxdriver().setup();
+				driver=new FirefoxDriver();
+			}
 			setDr(driver);
 		}
 	}
@@ -35,5 +43,6 @@ public final class Driver {
 	public static void cleanupDriver() {
 		if(Objects.nonNull(getDriver()))
 			getDriver().quit();
+		unload();
 	}
 }

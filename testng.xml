@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Suite">
+<suite name="Suite" parallel="tests">
 <listeners>
 <listener class-name="com.joel.listeners.ListenersClass"/>	
 </listeners>
-  <test thread-count="2" name="Test" parallel="classes">
+  <test thread-count="2" name="Test with chrome" parallel="classes">
+  <parameter name="browser" value="chrome"/>
     <classes>
       <class name="org.joel.tests.LoginPagetest"/>
       <class name="org.joel.tests.HomePagetest"/>
     </classes>
-  </test> <!-- Test -->
-</suite> <!-- Suite -->
+  </test> 
+  <!-- <test thread-count="2" name="Test with firefox" parallel="classes">
+   <parameter name="browser" value="firefox"/>
+    <classes>
+      <class name="org.joel.tests.LoginPagetest"/>
+      <class name="org.joel.tests.HomePagetest"/>
+    </classes>
+  </test>  -->
+</suite>

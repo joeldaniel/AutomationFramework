@@ -10,8 +10,12 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import com.joel.constants.FrameworkConstants;
+import com.joel.enums.Categorytype;
 import com.joel.utils.ReadPropertyFile;
+/**
 
+ * @param cat
+ */
 public final class ExtentReport {
 	private ExtentReport() {}
 	
@@ -31,7 +35,7 @@ public final class ExtentReport {
 		ex.set(extent);
 	}
 
-	static void unLoad() {ex.remove();}
+	public static void unLoad() {ex.remove();}
 	
 	public static void initReports() throws Exception {
 		if(Objects.isNull(extent)) {
@@ -58,5 +62,14 @@ public final class ExtentReport {
 	public static void createTest(String testcasename) {
 		test=extent.createTest(testcasename);
 		setEx(test);
+	}
+	
+	public static void addauthors(String [] authors) {
+		getEx().assignAuthor(authors);
+	}
+	
+	public static void addcategory(Categorytype[] cat) {
+		for(Categorytype c:cat)
+			getEx().assignCategory(c.toString());
 	}
 }

@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Properties;
 
+import com.joel.FrameworkExceptions.FrameworkException;
 import com.joel.enums.Configproperties;
 
 public final class ReadPropertyFile {
@@ -20,20 +21,16 @@ public final class ReadPropertyFile {
 	
 	
 	static {
-		try {
-			FileInputStream FIS=new FileInputStream(System.getProperty("user.dir")+"/src/test/resources/config/config.properties");
+		try(FileInputStream FIS=new FileInputStream(System.getProperty("user.dir")+"/src/test/resources/config/config.properties")) {
 			prop.load(FIS);
 			for(Object Key:prop.keySet()) {
 				ConfigMap.put(String.valueOf(Key), String.valueOf(prop.get(Key)));
 			}
 			
-			//ConfigMap.entrySet().forEach(entryset->ConfigMap.put(String.valueOf()), String.valueOf(entryset.getValue())));
-		} catch (FileNotFoundException e) {
-			
-			e.printStackTrace();
+		
 		} catch (IOException e) {
-			
 			e.printStackTrace();
+			System.exit(0);//since it is static block, to not have to execution further; we use system.exit(0)
 		}
 		
 	}

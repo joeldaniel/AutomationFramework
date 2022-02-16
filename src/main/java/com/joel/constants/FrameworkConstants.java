@@ -10,6 +10,7 @@ public final class FrameworkConstants {
 	}
 	
 	private static final String chromedriverpath=System.getProperty("user.dir")+"/src/test/resources/executables/chromedriver.exe";
+	private static final String firefoxdriverpath=System.getProperty("user.dir")+"/src/test/resources/executables/geckodriver.exe";
 	private static final String extentreportfolderpath=System.getProperty("user.dir")+"\\Reports\\";
 	private static String extentreportfilepath="";
 
@@ -20,6 +21,10 @@ public final class FrameworkConstants {
 			extentreportfilepath=createReportPath();
 		}
 		return extentreportfilepath;
+	}
+
+	public static String getFirefoxdriverpath() {
+		return firefoxdriverpath;
 	}
 
 	private static String createReportPath() {
